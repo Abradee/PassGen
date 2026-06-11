@@ -1,9 +1,6 @@
 import os
 import random
 import string
-from cryptography.fernet import Fernet
-import tkinter as tk
-from tkinter import messagebox, simpledialog, scrolledtext
 
 
 substitutions = {
@@ -35,6 +32,7 @@ def generate_password():
     for char in password:
         if char in substitutions and random.random() < 0.5:
             password = password.replace(char, random.choice(substitutions[char]), 1)
+    return password
 
 print("Welcome to PassGen")
 print("generating password..")
@@ -42,7 +40,7 @@ passwords = input("how many passwords do you want? (enter a number): \n")
 passwordsint = int(passwords)
 for i in range(passwordsint):  
     password = generate_password()
-    print("password generated!\n" + password)
+    print("password generated!\n" + str(password))
 
 print("\npress enter to exit")
 input()
